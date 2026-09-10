@@ -2,10 +2,6 @@ import React from 'react';
 import { Hero } from '../components/sections/Hero';
 import { Requirements } from '../components/sections/Requirements';
 import { Lineage } from '../components/sections/Lineage';
-import { TheWorld } from '../components/sections/TheWorld';
-import { Philosophy } from '../components/sections/Philosophy';
-import { TheStory } from '../components/sections/TheStory';
-import { WorkMarquee } from '../components/sections/WorkMarquee';
 
 export const Home: React.FC = () => {
   const handleScrollToApply = () => {
@@ -26,11 +22,7 @@ export const Home: React.FC = () => {
       <Hero onApplyClick={handleScrollToApply} />
       <div className="content-wrapper">
         <Lineage />
-        <TheWorld />
         <Requirements />
-        <Philosophy />
-        <TheStory />
-        <WorkMarquee />
       </div>
     </main>
   );

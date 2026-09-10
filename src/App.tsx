@@ -2,11 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RootLayout } from './components/layout/RootLayout';
 import { Home } from './pages/Home';
+import { StoryPage } from './pages/Story/StoryPage';
 import { Movement } from './pages/Retreats/Movement';
-import { Wellness } from './pages/Retreats/Wellness';
-import { Cottage } from './pages/Retreats/Cottage';
-import { Social } from './pages/Retreats/Social';
-import { Culture } from './pages/Retreats/Culture';
+import { Chapters } from './pages/Retreats/Chapters';
 import { GalleryPage } from './pages/Gallery/GalleryPage';
 import { EditionsPage } from './pages/Editions/EditionsPage';
 import { InvitationPage } from './pages/Invitation/InvitationPage';
@@ -17,11 +15,10 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
+          <Route path="story" element={<StoryPage />} />
           <Route path="retreats/movement" element={<Movement />} />
-          <Route path="retreats/wellness" element={<Wellness />} />
-          <Route path="retreats/escapes" element={<Cottage />} />
-          <Route path="retreats/social" element={<Social />} /> 
-          <Route path="retreats/culture" element={<Culture />} /> 
+          <Route path="chapters" element={<Chapters />} />
+          <Route path="retreats/wellness" element={<Chapters />} />
           <Route path="gallery" element={<GalleryPage />} /> 
           <Route path="editions" element={<EditionsPage />} /> 
           <Route path="invitations" element={<InvitationPage />} /> 

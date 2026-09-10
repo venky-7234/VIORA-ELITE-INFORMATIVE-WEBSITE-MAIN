@@ -78,6 +78,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
     }
   };
 
+  const handleStoryClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === '/story') {
+      e.preventDefault();
+      closeMenu();
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.5 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      closeMenu();
+    }
+  };
+
   const handleGalleryClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (location.pathname === '/gallery') {
       e.preventDefault();
@@ -142,24 +156,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
 
         {/* Desktop Navigation */}
         <div className="navbar-menu">
-          <Link to="/gallery" onClick={handleGalleryClick} className="nav-link">The Journal</Link>
-          <Link to="/editions" onClick={handleEditionsClick} className="nav-link">Editions</Link>
-
-          {/* Experiences Dropdown */}
+          <Link to="/" onClick={(e) => handleNavClick(e, 'home')} className="nav-link">HOME</Link>
+          <Link to="/story" onClick={handleStoryClick} className="nav-link">THE STORY</Link>
+          <Link to="/gallery" onClick={handleGalleryClick} className="nav-link">THE JOURNAL</Link>
+          
+          {/* Chapters Dropdown */}
           <div className="nav-dropdown-container">
             <span className="nav-link nav-link-dropdown" style={{ cursor: 'pointer' }}>
-              Experiences <span className="nav-dropdown-arrow">▼</span>
+              THE CHAPTERS <span className="nav-dropdown-arrow">▼</span>
             </span>
             <div className="nav-dropdown-menu">
-              <Link to="/retreats/social" className="nav-dropdown-item">Social</Link>
-              <Link to="/retreats/wellness" className="nav-dropdown-item">Wellness</Link>
+              <Link to="/chapters" className="nav-dropdown-item">Chapter 1</Link>
               <Link to="/retreats/movement" className="nav-dropdown-item">Movement</Link>
-              <Link to="/retreats/escapes" className="nav-dropdown-item">Escapes</Link>
-              <Link to="/retreats/culture" className="nav-dropdown-item">Culture</Link>
             </div>
           </div>
-
-          <Link to="/invitations" onClick={handleInvitationClick} className="nav-link">Invitations</Link>
         </div>
 
         {/* Desktop Actions */}
@@ -192,7 +202,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
             size="sm"
             onClick={onApplyClick}
           >
-            Apply for Invite
+            REQUEST A INVITE
           </Button>
         </div>
 
@@ -220,26 +230,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
       {/* Mobile Drawer */}
       <div className={`mobile-drawer ${isOpen ? 'mobile-drawer-open' : ''}`}>
         <div className="mobile-drawer-links">
-          <Link to="/gallery" onClick={handleGalleryClick} className="mobile-nav-link">The Journal</Link>
-          <Link to="/editions" onClick={handleEditionsClick} className="mobile-nav-link">Editions</Link>
-
+          <Link to="/" onClick={(e) => { handleNavClick(e, 'home'); closeMenu(); }} className="mobile-nav-link">HOME</Link>
+          <Link to="/story" onClick={(e) => { handleStoryClick(e); closeMenu(); }} className="mobile-nav-link">THE STORY</Link>
+          <Link to="/gallery" onClick={(e) => { handleGalleryClick(e); closeMenu(); }} className="mobile-nav-link">THE JOURNAL</Link>
+          
           <div className="mobile-nav-dropdown-group">
             <button
               className="mobile-nav-link mobile-dropdown-toggle"
               onClick={toggleMobileExperiences}
             >
-              Experiences <span className={`nav-dropdown-arrow ${mobileExperiencesOpen ? 'open' : ''}`}>▼</span>
+              THE CHAPTERS <span className={`nav-dropdown-arrow ${mobileExperiencesOpen ? 'open' : ''}`}>▼</span>
             </button>
             <div className={`mobile-nav-sublinks ${mobileExperiencesOpen ? 'open' : ''}`}>
-              <Link to="/retreats/social" onClick={closeMenu} className="mobile-nav-sublink">Social</Link>
-              <Link to="/retreats/wellness" onClick={closeMenu} className="mobile-nav-sublink">Wellness</Link>
+              <Link to="/chapters" onClick={closeMenu} className="mobile-nav-sublink">Chapter 1</Link>
               <Link to="/retreats/movement" onClick={closeMenu} className="mobile-nav-sublink">Movement</Link>
-              <Link to="/retreats/escapes" onClick={closeMenu} className="mobile-nav-sublink">Escapes</Link>
-              <Link to="/retreats/culture" onClick={closeMenu} className="mobile-nav-sublink">Culture</Link>
             </div>
           </div>
-
-          <Link to="/invitations" onClick={handleInvitationClick} className="mobile-nav-link">Invitations</Link>
 
           <div className="mobile-drawer-divider"></div>
 
@@ -250,7 +256,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
             fullWidth
             onClick={() => { closeMenu(); onApplyClick(); }}
           >
-            Apply for Invite
+            REQUEST A INVITE
           </Button>
         </div>
       </div>

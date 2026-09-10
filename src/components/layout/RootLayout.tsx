@@ -4,7 +4,6 @@ import { ReactLenis, useLenis } from 'lenis/react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { ScrollProgressBar } from '../common/ScrollProgressBar';
-import { CustomCursor } from '../common/CustomCursor';
 
 export const RootLayout: React.FC = () => {
   const location = useLocation();
@@ -43,7 +42,6 @@ export const RootLayout: React.FC = () => {
       wheelMultiplier: 0.7, // Slower wheel scroll speed
       smoothWheel: true,
     }}>
-      <CustomCursor />
       <ScrollProgressBar />
 
       <Navbar onApplyClick={handleScrollToApply} />

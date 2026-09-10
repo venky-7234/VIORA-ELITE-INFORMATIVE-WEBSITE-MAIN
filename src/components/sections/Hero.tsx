@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '../common/Button';
 import { useLenis } from 'lenis/react';
 import { AnimatedVioraLogo } from './AnimatedVioraLogo';
-import { HeroBackgroundGrid } from './HeroBackgroundGrid';
 import './Hero.css';
 
 const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -22,23 +21,8 @@ export const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
   const birdY = useTransform(scrollY, [birdStart, birdStart + 250], [0, -350]);
   const birdOpacity = useTransform(scrollY, [birdStart, birdStart + 150, birdStart + 250], [1, 1, 0]);
 
-  const handleScrollToRetreats = () => {
-    const element = document.getElementById('retreats');
-    if (element) {
-      const navbarHeight = 80;
-      if (lenis) {
-        lenis.scrollTo(element, { offset: -navbarHeight });
-      } else {
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
-    }
-  };
-
   return (
     <header id="hero" className="hero-section">
-      <HeroBackgroundGrid />
       <div className="container hero-container-centered">
 
         {/* Logo block */}
@@ -92,9 +76,6 @@ export const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
         >
           <Button id="hero-apply-btn" variant="primary" size="md" glow onClick={onApplyClick}>
             Request Invitation
-          </Button>
-          <Button id="hero-explore-btn" variant="outline" size="md" onClick={handleScrollToRetreats}>
-            Explore Retreats
           </Button>
         </motion.div>
 

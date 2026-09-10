@@ -10,10 +10,10 @@ const ParallaxImage = ({ className = '' }: { className?: string }) => {
     offset: ["start end", "end start"]
   });
 
-  // Parallax translation for the image inside the clipping mask
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  // Parallax translation for the image inside the clipping mask - reduced for lazy scroll
+  const y = useTransform(scrollYProgress, [0, 1], ["-3%", "3%"]);
   // Breathing scale down effect as you scroll down
-  const scale = useTransform(scrollYProgress, [0, 1], [1.25, 1.05]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.0]);
 
   // Mask reveal on scroll (sliding open from bottom to top)
   const maskReveal: any = {
@@ -110,12 +110,9 @@ export const TheStory: React.FC = () => {
       <div className="story-canvas-card">
 
         {/* Section 1: Intro */}
-        <section className="story-intro-section">
-          <div className="story-intro-image">
-            <ParallaxImage />
-          </div>
-          <div className="story-intro-right">
-            <h1 className="intro-heading" style={{ display: 'flex', flexDirection: 'column' }}>
+        <section className="story-intro-section" style={{ justifyContent: 'center', textAlign: 'center' }}>
+          <div className="story-intro-right" style={{ padding: '2rem 0', alignItems: 'center' }}>
+            <h1 className="intro-heading" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <RevealHeading delay={0.1}>We Don't Host People.</RevealHeading>
               <RevealHeading delay={0.3}>We Curate Rooms.</RevealHeading>
             </h1>
@@ -196,19 +193,7 @@ export const TheStory: React.FC = () => {
 
 
 
-        {/* Section 5: The Difference (Intro Style) */}
-        <section className="story-intro-section" style={{ borderBottom: 'none' }}>
-          <div className="story-intro-image">
-            <ParallaxImage />
-          </div>
-          <div className="story-intro-right">
-            <StaggeredText
-              className="intro-paragraph"
-              delay={0.1}
-              text="Viora is defined by a distinct way of seeing experiences — bringing together people, places and moments with a sense of curiosity, character and quiet refinement. No two experiences are quite alike, yet each carries the same unmistakable Viora perspective."
-            />
-          </div>
-        </section>
+        {/* Section 5 removed per user request */}
 
         {/* Section 6: Closing */}
         <section className="story-closing">

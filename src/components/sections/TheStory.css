@@ -26,8 +26,9 @@
 */
 .story-intro-section {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  min-height: 50vh;
+  min-height: 30vh; /* Reduced to bring next section closer */
   gap: 4rem;
 }
 
@@ -53,7 +54,7 @@
   font-weight: 700;
   color: var(--accent-color);
   line-height: 1.1;
-  margin-bottom: 2rem;
+  margin-bottom: 0; /* Removed margin since there is no subtext */
   text-transform: uppercase;
   max-width: 800px;
 }
@@ -74,29 +75,30 @@
 .story-collage-section {
   position: relative;
   min-height: 800px;
-  padding: 6rem 2rem;
+  padding: 0rem 2rem 6rem; /* Removed top padding to pull it closer to heading */
   display: flex;
 }
 
 .collage-images-container {
   display: flex;
-  width: 100%;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-start; /* Prevent vertical stretching */
+  width: 100%;
+  max-width: 1200px;
   position: relative;
 }
 
 .collage-img-left {
-  width: 40%;
-  aspect-ratio: 1 / 1;
+  width: 35%; /* Reverted to 35% */
+  aspect-ratio: 1 / 1; /* Square ratio per user request */
   height: auto;
   margin-top: 150px; /* Staggered lower */
   position: relative;
 }
 
 .collage-img-right {
-  width: 35%;
-  aspect-ratio: 1 / 1;
+  width: 35%; /* Reverted to 35% */
+  aspect-ratio: 1 / 1; /* Square ratio per user request */
   height: auto;
   margin-top: 0; /* Staggered higher */
   position: relative;
@@ -165,10 +167,14 @@
   flex: 1;
   position: relative;
   padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .asym-inner-img {
-  width: 100%;
+  width: 60%; /* Reduced from 100% to make it smaller on desktop */
+  max-width: 450px;
   aspect-ratio: 1 / 1;
   height: auto;
   position: relative;
@@ -289,29 +295,41 @@
     text-align: center;
   }
   
-  /* Staggered Collage Mobile */
+  /* Staggered Collage Mobile - Sequential Scroll */
   .story-collage-section {
     padding: 4rem 1rem;
     min-height: auto;
   }
   .collage-images-container {
+    display: flex;
     flex-direction: column;
-    gap: 2rem;
+    align-items: center;
+    gap: 3rem;
   }
-  .collage-img-left, .collage-img-right {
-    width: 100%;
-    margin-top: 0;
-    aspect-ratio: 1 / 1;
+  .collage-img-left {
+    order: 1;
+    width: 100%; /* Reverted to full width */
+    aspect-ratio: 1 / 1; /* Square ratio per user request */
     height: auto;
+    margin-top: 0;
   }
   .collage-center-card {
+    order: 2;
     position: relative;
     top: auto;
     left: auto;
     transform: none;
     width: 100%;
-    margin-top: 2rem;
-    padding: 3rem 2rem;
+    max-width: 100%;
+    padding: 3rem 1.5rem;
+    z-index: 10;
+  }
+  .collage-img-right {
+    order: 3;
+    width: 100%; /* Reverted to full width */
+    aspect-ratio: 1 / 1; /* Square ratio per user request */
+    height: auto;
+    margin-top: 0;
   }
   
   /* Asymmetric Grid Mobile */
@@ -323,6 +341,7 @@
     padding: 3rem 2rem;
   }
   .asym-inner-img {
+    width: 100%; /* Revert to full width on mobile */
     aspect-ratio: 1 / 1;
     height: auto;
   }

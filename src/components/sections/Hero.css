@@ -17,7 +17,7 @@
 }
 
 /* ── Background Video & Mask ─────────────────────────────── */
-.hero-video-bg {
+.hero-slideshow-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,7 +37,8 @@
       var(--bg-color) 0%,
       var(--bg-color) 40%,
       var(--bg-color) 100%);
-  opacity: 0.9;
+  opacity: 0.55;
+  z-index: -1;
   z-index: -1;
 }
 
