@@ -3,7 +3,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate
 } from 'react-router-dom';
 
 import { RootLayout } from './components/layout/RootLayout';
@@ -20,18 +19,12 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
 
-        {/* Redirect main domain to chapter-01 */}
-        <Route
-          path="/"
-          element={<Navigate to="/chapter-01" replace />}
-        />
-
         {/* Main website layout */}
         <Route element={<RootLayout />}>
 
           {/* Landing page */}
           <Route
-            path="/chapter-01"
+            path="/"
             element={<Home />}
           />
 
