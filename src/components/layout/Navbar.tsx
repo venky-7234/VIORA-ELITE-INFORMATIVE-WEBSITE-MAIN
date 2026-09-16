@@ -106,34 +106,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
     }
   };
 
-  const handleEditionsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.pathname === '/editions') {
-      e.preventDefault();
-      closeMenu();
-      if (lenis) {
-        lenis.scrollTo(0, { duration: 1.5 });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    } else {
-      closeMenu();
-    }
-  };
-
-  const handleInvitationClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.pathname === '/invitations') {
-      e.preventDefault();
-      closeMenu();
-      if (lenis) {
-        lenis.scrollTo(0, { duration: 1.5 });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    } else {
-      closeMenu();
-    }
-  };
-
   const handleFontChange = (font: string) => {
     document.documentElement.setAttribute('data-font', font);
   };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '../common/Button';
-import { useLenis } from 'lenis/react';
 import { AnimatedVioraLogo } from './AnimatedVioraLogo';
 import './Hero.css';
 
@@ -12,7 +11,6 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
-  const lenis = useLenis();
   const { scrollY } = useScroll();
 
   // The bird sits on top of the "O" (which is index 2 in VIORA).

@@ -184,7 +184,7 @@ export const Chapters: React.FC = () => {
                   layout
                   drag={isMobile ? "x" : false}
                   dragConstraints={{ left: 0, right: 0 }}
-                  onDragEnd={(e, { offset, velocity }) => {
+                  onDragEnd={(_, { offset }) => {
                     const swipe = offset.x;
                     if (swipe < -50) {
                       handleNext();
@@ -228,7 +228,7 @@ export const Chapters: React.FC = () => {
               className="chapters-pagination"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              onDragEnd={(e, { offset }) => {
+              onDragEnd={(_, { offset }) => {
                 const swipe = offset.x;
                 if (swipe < -30) handleNext();
                 else if (swipe > 30) handlePrev();
