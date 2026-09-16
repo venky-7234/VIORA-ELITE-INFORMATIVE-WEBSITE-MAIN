@@ -1,5 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom';
+
 import { RootLayout } from './components/layout/RootLayout';
 import { Home } from './pages/Home';
 import { StoryPage } from './pages/Story/StoryPage';
@@ -13,16 +19,59 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<Home />} />
-          <Route path="story" element={<StoryPage />} />
-          <Route path="retreats/movement" element={<Movement />} />
-          <Route path="chapters" element={<Chapters />} />
-          <Route path="retreats/wellness" element={<Chapters />} />
-          <Route path="gallery" element={<GalleryPage />} /> 
-          <Route path="editions" element={<EditionsPage />} /> 
-          <Route path="invitations" element={<InvitationPage />} /> 
+
+        {/* Redirect main domain to chapter-01 */}
+        <Route
+          path="/"
+          element={<Navigate to="/chapter-01" replace />}
+        />
+
+        {/* Main website layout */}
+        <Route element={<RootLayout />}>
+
+          {/* Landing page */}
+          <Route
+            path="/chapter-01"
+            element={<Home />}
+          />
+
+          <Route
+            path="/story"
+            element={<StoryPage />}
+          />
+
+          <Route
+            path="/retreats/movement"
+            element={<Movement />}
+          />
+
+          <Route
+            path="/chapters"
+            element={<Chapters />}
+          />
+
+          <Route
+            path="/retreats/wellness"
+            element={<Chapters />}
+          />
+
+          <Route
+            path="/gallery"
+            element={<GalleryPage />}
+          />
+
+          <Route
+            path="/editions"
+            element={<EditionsPage />}
+          />
+
+          <Route
+            path="/invitations"
+            element={<InvitationPage />}
+          />
+
         </Route>
+
       </Routes>
     </BrowserRouter>
   );
