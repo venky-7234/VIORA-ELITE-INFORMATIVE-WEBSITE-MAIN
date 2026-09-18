@@ -13,30 +13,30 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="footer">
-      <div className="container footer-container" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-        
-        {/* Logo and Heading Centered */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '4rem 0' }}>
-          <a href="#" className="footer-logo" onClick={handleScrollToTop} style={{ marginBottom: '2rem', margin: '0 auto 2rem auto' }}>
-            <img src="/media/icons/viora-text-only.svg" alt="Viora Elite" style={{ width: '240px' }} />
+      <div className="container footer-container">
+        <div className="footer-brand">
+          <a href="#" className="footer-logo" onClick={handleScrollToTop}>
+            <img src="/media/icons/viora-text-only.svg" alt="Viora Elite" />
           </a>
           <h2 className="footer-heading-text">
             THE CHOOSEN
           </h2>
         </div>
 
-        <div className="footer-content" style={{ alignItems: 'flex-start' }}>
-          {/* Left Column: Navigation */}
-          <div className="footer-column footer-nav">
+        <div className="footer-content">
+          <div className="footer-left">
+            <div className="footer-column footer-nav">
             <Link to="/" className="footer-link">Home</Link>
             <Link to="/story" className="footer-link">The Story</Link>
             <Link to="/gallery" className="footer-link">The Journal</Link>
             <Link to="/chapters" className="footer-link">The Chapters</Link>
+            </div>
+
           </div>
 
-          {/* Middle Column: Social Icons */}
-          <div className="footer-column footer-socials">
-            <a href="#" className="footer-link" aria-label="Instagram">
+          <div className="footer-right">
+            <div className="footer-column footer-socials">
+              <a href="#" className="footer-link" aria-label="Instagram">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
             <a href="#" className="footer-link" aria-label="Twitter">
@@ -51,16 +51,14 @@ export const Footer: React.FC = () => {
             <a href="#" className="footer-link" aria-label="YouTube">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
             </a>
-            <a href="#" className="footer-link" aria-label="TikTok">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-            </a>
+            </div>
+
+            <div className="footer-legal">
+              <a href="#" className="footer-link">Privacy Policy</a>
+              <a href="#" className="footer-link">Terms of Service</a>
+            </div>
           </div>
 
-          {/* Right Column: Legal Links */}
-          <div className="footer-column footer-legal">
-            <a href="#" className="footer-link" style={{ fontSize: '0.9rem', color: 'var(--text-tertiary)' }}>Privacy Policy</a>
-            <a href="#" className="footer-link" style={{ fontSize: '0.9rem', color: 'var(--text-tertiary)' }}>Terms of Service</a>
-          </div>
         </div>
 
         <p className="copyright">

@@ -18,7 +18,7 @@
   font-family: var(--font-heading);
   font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 300;
-  color: var(--text-primary);
+  color: var(--accent-color);
   margin-bottom: 1rem;
   letter-spacing: 0.05em;
   text-transform: none;
@@ -35,7 +35,7 @@
 }
 
 .gallery-masonry-section {
-  padding: 0 0 120px 0;
+  padding: 0 0 3rem;
 }
 
 .container-fluid {
@@ -105,6 +105,42 @@
   /* Filter removed to match screenshot's natural colors */
 }
 
+/* Populated cards follow the source image's natural proportions so the full
+   photograph is always visible instead of being cropped into a fixed frame. */
+.masonry-image-wrapper.has-image {
+  padding-bottom: 0;
+}
+
+.masonry-image-wrapper.has-image .masonry-img {
+  position: relative;
+  top: auto;
+  left: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.masonry-image-wrapper.is-empty {
+  background:
+    linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(63, 17, 29, 0.78)),
+    var(--bg-color);
+}
+
+.masonry-empty-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  color: rgba(245, 245, 247, 0.62);
+  font-size: clamp(0.55rem, 0.8vw, 0.75rem);
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .masonry-overlay {
   position: absolute;
   inset: 0;
@@ -144,12 +180,21 @@
 
 /* Responsive */
 @media (max-width: 640px) {
+  .gallery-page-container {
+    min-height: 0;
+  }
+
+  .gallery-masonry-section {
+    padding-bottom: 2.5rem;
+  }
+
   .masonry-grid {
     gap: 0.5rem;
   }
   .masonry-column {
     gap: 0.5rem;
   }
+
   .gallery-page-title {
     font-size: 1.8rem;
   }

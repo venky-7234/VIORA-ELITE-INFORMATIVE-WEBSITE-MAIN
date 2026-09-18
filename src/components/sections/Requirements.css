@@ -1,17 +1,17 @@
 .requirements-section {
   position: relative;
-  height: 350vh;
+  height: 220vh;
   background-color: var(--bg-color);
 }
 
 .requirements-sticky-container {
   position: sticky;
-  top: 110px;
-  height: calc(100vh - 110px);
+  top: 0;
+  height: 100vh;
   display: flex;
   flex-direction: row; /* Horizontal layout */
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow: hidden;
   max-width: 1200px;
   margin: 0 auto;
@@ -20,31 +20,39 @@
 
 .requirements-header {
   text-align: left;
-  flex: 1;
-  padding-right: 4rem;
+  flex: 0 0 44%;
+  padding-right: 1rem;
   transform: translateY(-2rem);
 }
 
 .requirements-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
+  font-size: clamp(2rem, 4vw, 4rem);
   font-weight: 400;
-  color: var(--text-primary);
+  background: linear-gradient(160deg,
+      #fdf3d0 10%,
+      #e8c84a 35%,
+      #d4af37 55%,
+      #c9952b 72%,
+      #f0d98e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.2;
+  white-space: nowrap;
   margin: 0;
 }
 
 .requirements-subtitle {
-  font-family: var(--font-cursive);
-  font-size: clamp(3rem, 5vw + 1rem, 5rem);
-  color: var(--accent-color);
+  font-family: var(--font-heading);
+  font-size: inherit;
+  color: inherit;
   font-weight: 300;
-  display: block;
-  margin-top: -10px;
+  display: inline;
 }
 
 .requirements-description {
-  margin-top: 1.5rem;
+  margin-top: 0.75rem;
   max-width: 450px;
 }
 
@@ -59,15 +67,35 @@
 
 .req-desc-text {
   font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: 0.95rem;
+  line-height: 1.55;
   color: var(--text-primary);
   font-weight: 300;
   opacity: 0.9;
+  max-width: 430px;
+}
+
+.requirement-card-image-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f0e6;
+  border-radius: 15px 0 0 15px;
+}
+
+.requirement-card-image-fallback img {
+  width: 180px;
+  height: 180px;
+  opacity: 0.8;
+}
+
+.requirement-card-image-fallback-right {
+  border-radius: 0 15px 15px 0;
 }
 
 .requirements-track-wrapper {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,7 +103,7 @@
 
 .requirements-book {
   position: relative;
-  width: 320px;
+  width: 280px;
   height: 400px;
   perspective: 2000px; /* Enhanced 3D effect moved here */
 }
@@ -187,6 +215,29 @@
     text-align: center;
     padding-right: 0;
     margin-bottom: 2rem;
+    flex: 0 0 auto;
+  }
+
+  .requirements-track-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+    justify-content: center;
+    position: static;
+    transform: none;
+  }
+
+  .requirements-book {
+    transform: translateX(70px);
+  }
+}
+
+@media (min-width: 1025px) {
+  .requirements-track-wrapper {
+    position: absolute;
+    top: calc(50% + 60px);
+    left: calc(50% + 320px);
+    width: 280px;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -195,5 +246,9 @@
     width: 300px;
     padding: 2.5rem 2rem;
   }
-}
 
+  .requirements-book {
+    width: 140px;
+    transform: translateX(70px);
+  }
+}

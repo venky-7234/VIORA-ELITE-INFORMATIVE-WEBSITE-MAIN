@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ReactLenis, useLenis } from 'lenis/react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
@@ -17,23 +17,10 @@ export const RootLayout: React.FC = () => {
     }
   }, [location.pathname, lenis]);
 
-  const handleScrollToApply = () => {
-    // We will update this later to handle cross-page apply logic if needed,
-    // but for now it will just scroll down or navigate to home footer.
-    const element = document.getElementById('apply-section') || document.querySelector('.footer');
-    if (element) {
-      const navbarHeight = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-      if (lenis) {
-        lenis.scrollTo(offsetPosition, { duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-      } else {
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }
+  const navigate = useNavigate();
+
+  const handleApplyClick = () => {
+    navigate('/apply');
   };
 
   return (
@@ -44,7 +31,7 @@ export const RootLayout: React.FC = () => {
     }}>
       <ScrollProgressBar />
 
-      <Navbar onApplyClick={handleScrollToApply} />
+      <Navbar onApplyClick={handleApplyClick} />
       
       <div className="content-wrapper">
         <Outlet />

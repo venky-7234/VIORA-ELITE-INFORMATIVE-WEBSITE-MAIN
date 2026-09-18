@@ -15,8 +15,7 @@ const chaptersData = [
       'https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80',
       'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80'
     ],
-    img: '/media/images/req1.jpg',
-    location: 'Kerala, India'
+    img: 'https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/The+Story/Profile_images_BG_9_11zon.png'
   },
   {
     id: 2,
@@ -29,8 +28,7 @@ const chaptersData = [
       'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&q=80',
       'https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&q=80'
     ],
-    img: '/media/images/req2.jpg',
-    location: 'Kyoto, Japan'
+    img: 'https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Viora+Elite_Images/21.webp'
   },
   {
     id: 3,
@@ -43,8 +41,7 @@ const chaptersData = [
       'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80',
       'https://images.unsplash.com/photo-1533147670608-2a2f9776d3ac?auto=format&fit=crop&q=80'
     ],
-    img: '/media/images/req3.jpg',
-    location: 'Bali, Indonesia'
+    img: 'https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/The+Story/1434bf17-e2b9-4dd7-8025-8e721fd99e0d_2_11zon.png'
   },
   {
     id: 4,
@@ -57,8 +54,7 @@ const chaptersData = [
       'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80',
       'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80'
     ],
-    img: '/media/images/req4.jpg',
-    location: 'Tuscany, Italy'
+    img: 'https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Viora+Elite_Images/94.webp'
   },
   {
     id: 5,
@@ -71,8 +67,7 @@ const chaptersData = [
       'https://images.unsplash.com/photo-1506804886640-20a221f7e025?auto=format&fit=crop&q=80',
       'https://images.unsplash.com/photo-1530887376624-9b5522e84126?auto=format&fit=crop&q=80'
     ],
-    img: '/media/images/req5.jpg',
-    location: 'Patagonia, Chile'
+    img: 'https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Stock+Images/0a48ab28-28fb-442d-ba6e-de94a1a2fb0a-50kb.jpeg'
   }
 ];
 
@@ -204,7 +199,6 @@ export const Chapters: React.FC = () => {
                 >
                   <div className="carousel-card-overlay">
                     <h3 className="carousel-card-title">{chapter.edition} : {chapter.title}</h3>
-                    <p className="carousel-card-location">{chapter.location}</p>
                   </div>
                   {offset === 0 && (
                     <button 
@@ -274,14 +268,6 @@ export const Chapters: React.FC = () => {
                   <div className="modal-clean-text">
                     <span className="modal-edition-label">{activeChapter.edition}</span>
                     <h1 className="modal-title-clean">{activeChapter.title}</h1>
-                    <p className="modal-location-clean">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '8px' }}>
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                      {activeChapter.location}
-                    </p>
-
                     <div className="modal-clean-visuals mobile-only">
                       <div className="modal-image-card">
                         <img src={activeChapter.img} alt={activeChapter.title} className="modal-main-image" />

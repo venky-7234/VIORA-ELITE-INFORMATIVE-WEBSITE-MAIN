@@ -7,36 +7,37 @@ const requirementsData = [
     num: "01",
     title: "SELECTION",
     text: "Participation is extended by invitation only. Every name at this table is chosen deliberately. Our criteria are not disclosed.",
-    image: "/media/images/req1.jpg"
+    image: "https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Stock+Images/1adf848c-0569-47c6-9d33-d4b216fb57f1-50kb.jpeg"
   },
   {
     num: "02",
     title: "DRESS",
     text: "Men: a suit. Women: cocktail attire. No exceptions. The room has an aesthetic. You are part of it the moment you walk in.",
-    image: "/media/images/req2.jpg"
+    image: "https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Stock+Images/365b9ea7-2283-43a5-a57f-1134cc65d16f-50kb.jpeg"
   },
   {
     num: "03",
     title: "RSVP",
     text: "Confirm or decline. Ghosting is a choice, and it will be treated as one. Silence results in permanent removal from all cities.",
-    image: "/media/images/req3.jpg"
+    image: "https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Viora+Elite_Images/19.webp"
   },
   {
     num: "04",
     title: "PARTICIPATION FEE",
     text: "A participation fee applies. It is the filter that separates those who understand the value of a room from those who do not.",
-    image: "/media/images/req4.jpg"
+    image: "https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Stock+Images/ac4220dd-1318-418f-9f59-98a7ac66fb09-50kb.jpg"
   },
   {
     num: "05",
     title: "THE EVENING",
     text: "Food and beverages are settled individually with the venue. You are among equals. The conversation is the hospitality.",
-    image: "/media/images/req5.jpg"
+    image: "https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Stock+Images/image_1-50kb.jpeg"
   },
   {
     num: "06",
     title: "CONDUCT",
-    text: "The quality of the evening is only ever as good as the people in the room. This is how we protect that."
+    text: "The quality of the evening is only ever as good as the people in the room. This is how we protect that.",
+    image: "https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Stock+Images/6d699960-ca5d-4d88-a438-8d61683a5899-50kb.jpg"
   }
 ];
 
@@ -96,6 +97,7 @@ const FlipBookPage = ({ index, total, scrollYProgress, req }: { index: number, t
   const [isMobile, setIsMobile] = React.useState(
     typeof window !== 'undefined' ? window.innerWidth < 768 : false
   );
+  const [imageFailed, setImageFailed] = React.useState(false);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -120,29 +122,32 @@ const FlipBookPage = ({ index, total, scrollYProgress, req }: { index: number, t
         position: "absolute",
         top: 0,
         // Anchor pages exactly in the horizontal center of the screen
-        left: "50%",
+        left: 0,
         width: `${pageWidth}px`,
         height: `${pageHeight}px`
       }}
     >
       {/* Front Face (Right Page) */}
-      <div className="requirement-card requirement-card-front" style={{ position: 'absolute', width: '100%', height: '100%', backfaceVisibility: 'hidden', padding: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', transform: 'translateZ(1px)' }}>
-        <img src="/media/icons/spin-icon.svg" alt="Viora" style={{ width: '180px', height: '180px', opacity: 0.8 }} />
+      <div className="requirement-card requirement-card-front" style={{ position: 'absolute', width: '100%', height: '100%', backfaceVisibility: 'hidden', padding: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', transform: 'translateZ(1px)', overflow: 'hidden' }}>
+        {req.image && !imageFailed ? (
+          <img
+            src={req.image}
+            alt={req.title}
+            onError={() => setImageFailed(true)}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0 15px 15px 0' }}
+          />
+        ) : (
+          <div className="requirement-card-image-fallback requirement-card-image-fallback-right">
+            <img src="/media/icons/spin-icon.svg" alt="Viora" />
+          </div>
+        )}
       </div>
 
       {/* Back Face (Left Page, visible after flip) */}
-      <div className="requirement-card requirement-card-back" style={{ position: 'absolute', width: '100%', height: '100%', backfaceVisibility: 'hidden', transform: 'rotateY(180deg) translateZ(1px)', padding: 0, overflow: 'hidden', border: 'none', background: 'transparent' }}>
-        {req.image ? (
-          <img 
-            src={req.image} 
-            alt={req.title} 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '15px 0 0 15px' }} 
-          />
-        ) : (
-          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f5f0e6', borderRadius: '15px 0 0 15px' }}>
-            <img src="/media/icons/spin-icon.svg" alt="Viora" style={{ width: '180px', height: '180px', opacity: 0.8 }} />
-          </div>
-        )}
+      <div className="requirement-card requirement-card-back" style={{ position: 'absolute', width: '100%', height: '100%', backfaceVisibility: 'hidden', transform: 'rotateY(180deg) translateZ(1px)', padding: 0, overflow: 'hidden', border: 'none' }}>
+        <div className="requirement-card-image-fallback">
+          <img src="/media/icons/spin-icon.svg" alt="Viora" />
+        </div>
       </div>
     </motion.div>
   );
@@ -152,7 +157,8 @@ export const Requirements: React.FC = () => {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    // Add extra scroll distance so flips feel slower and smoother
+    // Begin turning pages only after the section has reached its sticky,
+    // centered position in the viewport.
     offset: ["start start", "end end"]
   });
 
@@ -160,7 +166,12 @@ export const Requirements: React.FC = () => {
   const containerHeight = isMobile ? '240px' : '450px';
 
   return (
-    <section id="requirements" ref={targetRef} className="requirements-section" style={{ height: "400vh" }}>
+    <section
+      id="requirements"
+      ref={targetRef}
+      className="requirements-section"
+      style={{ height: isMobile ? "140vh" : "220vh" }}
+    >
       <div className="requirements-sticky-container">
         
         <div className="requirements-header">
@@ -171,8 +182,7 @@ export const Requirements: React.FC = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              The Viora<br/>
-              <span className="requirements-subtitle">Way</span>
+              The Viora <span className="requirements-subtitle">Way</span>
             </motion.h2>
 
             <motion.div
@@ -190,7 +200,7 @@ export const Requirements: React.FC = () => {
 
         <div className="requirements-track-wrapper">
           {/* Centered container for the book spine */}
-          <div className="requirements-book" style={{ width: '0px', height: containerHeight, position: 'relative' }}>
+          <div className="requirements-book" style={{ height: containerHeight }}>
             {requirementsData.map((req, index) => (
               <FlipBookPage 
                 key={index} 

@@ -1,5 +1,5 @@
 .lineage-section {
-  padding: 8rem 0 2rem 0;
+  padding: 0 0 2rem 0;
   position: relative;
   background-color: var(--bg-color);
 }
@@ -98,6 +98,11 @@
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
+  .lineage-section {
+    margin-top: -35vh;
+    z-index: 2;
+  }
+
   .lineage-card {
     padding: 3rem 1.5rem;
   }

@@ -61,7 +61,7 @@
 
 /* The Cards */
 .marquee-card {
-  width: 300px;
+  width: auto;
   height: 250px;
   background-color: transparent;
   border-radius: 12px;
@@ -69,6 +69,18 @@
   overflow: hidden;
   position: relative;
   /* border: 1px solid var(--glass-border);  remove border for gallery style */
+}
+
+.marquee-image {
+  display: block;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-slow);
+}
+
+.marquee-card:hover .marquee-image {
+  transform: scale(1.03);
 }
 
 /* Placeholder Animations Matching Gallery */
@@ -126,7 +138,6 @@
   }
 
   .marquee-card {
-    width: 220px;
     height: 180px;
   }
 }

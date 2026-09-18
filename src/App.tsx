@@ -8,11 +8,11 @@ import {
 import { RootLayout } from './components/layout/RootLayout';
 import { Home } from './pages/Home';
 import { StoryPage } from './pages/Story/StoryPage';
-import { Movement } from './pages/Retreats/Movement';
 import { Chapters } from './pages/Retreats/Chapters';
 import { GalleryPage } from './pages/Gallery/GalleryPage';
 import { EditionsPage } from './pages/Editions/EditionsPage';
 import { InvitationPage } from './pages/Invitation/InvitationPage';
+import { ApplyPage } from './pages/Apply/ApplyPage';
 
 const App: React.FC = () => {
   return (
@@ -31,11 +31,6 @@ const App: React.FC = () => {
           <Route
             path="/story"
             element={<StoryPage />}
-          />
-
-          <Route
-            path="/retreats/movement"
-            element={<Movement />}
           />
 
           <Route
@@ -61,6 +56,12 @@ const App: React.FC = () => {
           <Route
             path="/invitations"
             element={<InvitationPage />}
+          />
+
+          {/* Viora Elite — Website Application Form */}
+          <Route
+            path="/apply"
+            element={<ApplyPage />}
           />
 
         </Route>

@@ -118,12 +118,6 @@
   transition: all var(--transition-fast);
 }
 
-[data-theme='light'] .form-group input,
-[data-theme='light'] .form-group select,
-[data-theme='light'] .form-group textarea {
-  background-color: rgba(0, 0, 0, 0.02);
-}
-
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {

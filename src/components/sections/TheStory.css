@@ -104,6 +104,11 @@
   position: relative;
 }
 
+.collage-img-left:has(.has-source-image),
+.collage-img-right:has(.has-source-image) {
+  aspect-ratio: auto;
+}
+
 /* The absolute center overlapping card */
 .collage-center-card {
   position: absolute;
@@ -240,6 +245,10 @@
   overflow: hidden;
 }
 
+.story-image-placeholder-wrapper.has-source-image {
+  height: auto;
+}
+
 .parallax-inner {
   position: absolute;
   inset: -15%;
@@ -247,6 +256,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.story-parallax-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.parallax-inner.has-image {
+  inset: 0;
 }
 
 .parallax-inner::before {

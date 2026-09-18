@@ -3,26 +3,21 @@ import { Hero } from '../components/sections/Hero';
 import { Requirements } from '../components/sections/Requirements';
 import { Lineage } from '../components/sections/Lineage';
 
+import { useNavigate } from 'react-router-dom';
+
 export const Home: React.FC = () => {
-  const handleScrollToApply = () => {
-    const element = document.getElementById('apply-section') || document.querySelector('.footer');
-    if (element) {
-      const navbarHeight = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  const navigate = useNavigate();
+
+  const handleApplyClick = () => {
+    navigate('/apply');
   };
 
   return (
     <main>
-      <Hero onApplyClick={handleScrollToApply} />
+      <Hero onApplyClick={handleApplyClick} />
       <div className="content-wrapper">
-        <Lineage />
         <Requirements />
+        <Lineage />
       </div>
     </main>
   );

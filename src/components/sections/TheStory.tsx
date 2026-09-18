@@ -1,19 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import './TheStory.css';
 
 // Helper component for true parallax image placeholder with Viora Elite styling
-const ParallaxImage = ({ className = '' }: { className?: string }) => {
+const ParallaxImage = ({ className = '', imageSrc }: { className?: string, imageSrc?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [imageRatio, setImageRatio] = useState<number | undefined>();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   });
 
   // Parallax translation for the image inside the clipping mask - reduced for lazy scroll
-  const y = useTransform(scrollYProgress, [0, 1], ["-3%", "3%"]);
+  const y = useTransform(scrollYProgress, [0, 1], imageSrc ? ["0%", "0%"] : ["-3%", "3%"]);
   // Breathing scale down effect as you scroll down
-  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.0]);
+  const scale = useTransform(scrollYProgress, [0, 1], imageSrc ? [1, 1] : [1.05, 1.0]);
 
   // Mask reveal on scroll (sliding open from bottom to top)
   const maskReveal: any = {
@@ -28,18 +29,30 @@ const ParallaxImage = ({ className = '' }: { className?: string }) => {
   return (
     <motion.div
       ref={ref}
-      className={`story-image-placeholder-wrapper ${className}`}
+      className={`story-image-placeholder-wrapper${imageSrc ? ' has-source-image' : ''} ${className}`}
+      style={imageRatio ? { aspectRatio: imageRatio } : undefined}
       variants={maskReveal}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
     >
       <motion.div
-        className="parallax-inner"
+        className={`parallax-inner${imageSrc ? ' has-image' : ''}`}
         style={{ y, scale }}
       >
+        {imageSrc && (
+          <img
+            className="story-parallax-image"
+            src={imageSrc}
+            alt="Viora story"
+            onLoad={(event) => {
+              const image = event.currentTarget;
+              setImageRatio(image.naturalWidth / image.naturalHeight);
+            }}
+          />
+        )}
         <div className="parallax-overlay"></div>
-        <div className="parallax-text">[ Image Placement ]</div>
+        {!imageSrc && <div className="parallax-text">[ Image Placement ]</div>}
       </motion.div>
     </motion.div>
   );
@@ -123,11 +136,11 @@ export const TheStory: React.FC = () => {
         <section className="story-collage-section">
           <div className="collage-images-container">
             <div className="collage-img-left">
-              <ParallaxImage />
+              <ParallaxImage imageSrc="https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/The+Story/bag_4_11zon.png" />
             </div>
 
             <div className="collage-img-right">
-              <ParallaxImage />
+              <ParallaxImage imageSrc="https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/The+Story/invetation_8_11zon.png" />
             </div>
 
             {/* Absolute Centered Overlapping Card */}
@@ -186,7 +199,7 @@ export const TheStory: React.FC = () => {
 
           <div className="asym-image-col">
             <div className="asym-inner-img">
-              <ParallaxImage />
+              <ParallaxImage imageSrc="https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/Stock+Images/1adf848c-0569-47c6-9d33-d4b216fb57f1-50kb.jpeg" />
             </div>
           </div>
         </section>

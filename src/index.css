@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap');
-@import url('https://fonts.cdnfonts.com/css/balligesta');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
 /* Modern Premium Reset & Global Styles */
 *, *::before, *::after {
@@ -9,10 +8,10 @@
 }
 :root {
   /* Fonts */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Syne', sans-serif;
-  --font-cursive: 'Alex Brush', cursive;
-  --font-tagline: 'Balligesta', var(--font-cursive);
+  --font-sans: 'Open Sans', sans-serif;
+  --font-heading: 'Open Sans', sans-serif;
+  --font-cursive: 'Open Sans', sans-serif;
+  --font-tagline: 'Open Sans', sans-serif;
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -20,30 +19,8 @@
   --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Font Switcher Overrides */
-[data-font="opensans"] {
-  --font-heading: 'Open Sans', sans-serif;
-  --font-sans: 'Open Sans', sans-serif;
-}
-[data-font="blackney"] {
-  --font-heading: 'Blackney', sans-serif;
-  --font-sans: 'Blackney', sans-serif;
-}
-[data-font="inter"] {
-  --font-heading: 'Inter', sans-serif;
-  --font-sans: 'Inter', sans-serif;
-}
-[data-font="lato"] {
-  --font-heading: 'Lato', sans-serif;
-  --font-sans: 'Lato', sans-serif;
-}
-[data-font="sft"] {
-  --font-heading: 'SFT Schrifted Serif TRIAL', serif;
-  --font-sans: 'SFT Schrifted Serif TRIAL', serif;
-}
-
 /* Viora Elite Theme (Default) */
-:root, [data-theme='viora'] {
+:root {
   --bg-color: #3f111d;
   --text-primary: #f5f5f7;
   --text-secondary: #b39e9e;
@@ -59,39 +36,6 @@
   --grid-line: rgba(212, 175, 55, 0.02);
 }
 
-/* Light Theme Variables */
-[data-theme='light'] {
-  --bg-color: #faf6f7;
-  --text-primary: #2b0914;
-  --text-secondary: #6e595e;
-  --accent-color: #b8860b;
-  --accent-hover: #8a640f;
-  --accent-rgb: 184, 134, 11;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(184, 134, 11, 0.15);
-  --glass-bg: rgba(250, 246, 247, 0.85);
-  --glass-border: rgba(43, 9, 20, 0.06);
-  --glow-color: rgba(184, 134, 11, 0.08);
-  --shadow-color: rgba(43, 9, 20, 0.06);
-  --grid-line: rgba(43, 9, 20, 0.02);
-}
-
-/* Pure Dark Theme Variables */
-[data-theme='dark'] {
-  --bg-color: #0a0a0a;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --accent-color: #d4af37;
-  --accent-hover: #fcedc9;
-  --accent-rgb: 212, 175, 55;
-  --card-bg: rgba(20, 20, 20, 0.7);
-  --card-border: rgba(212, 175, 55, 0.15);
-  --glass-bg: rgba(10, 10, 10, 0.85);
-  --glass-border: rgba(212, 175, 55, 0.05);
-  --glow-color: rgba(212, 175, 55, 0.08);
-  --shadow-color: rgba(0, 0, 0, 0.5);
-  --grid-line: rgba(212, 175, 55, 0.02);
-}
 
 /* Base Body Configuration */
 html {

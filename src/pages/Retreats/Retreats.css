@@ -51,13 +51,6 @@
 .placeholder-bg-4 { background-color: #151515; }
 .placeholder-bg-5 { background-color: #222222; }
 
-/* In light mode, placeholders should be lighter */
-[data-theme='light'] .placeholder-bg-1 { background-color: #e0e0e0; }
-[data-theme='light'] .placeholder-bg-2 { background-color: #e8e8e8; }
-[data-theme='light'] .placeholder-bg-3 { background-color: #f0f0f0; }
-[data-theme='light'] .placeholder-bg-4 { background-color: #d8d8d8; }
-[data-theme='light'] .placeholder-bg-5 { background-color: #e4e4e4; }
-
 .placeholder-content {
   position: absolute;
   top: 0;
