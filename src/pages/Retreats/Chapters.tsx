@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
 import './Chapters.css';
 
 const chaptersData = [
@@ -72,6 +73,7 @@ const chaptersData = [
 ];
 
 export const Chapters: React.FC = () => {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -103,6 +105,10 @@ export const Chapters: React.FC = () => {
 
   const openDetails = () => {
     setIsDetailsOpen(true);
+  };
+
+  const handleRequestInvite = () => {
+    navigate('/apply');
   };
 
   return (
@@ -241,7 +247,7 @@ export const Chapters: React.FC = () => {
           {/* Mobile Request Invite Button under the dots */}
           {isMobile && !isDetailsOpen && (
             <div className="mobile-cta-wrapper">
-              <button className="floating-cta-btn pill-shape">Request Invite</button>
+              <button className="floating-cta-btn pill-shape" onClick={handleRequestInvite}>Request Invite</button>
             </div>
           )}
         </div>
@@ -294,7 +300,7 @@ export const Chapters: React.FC = () => {
                 </div>
 
                 <div className="cta-button-container">
-                  <button className="floating-cta-btn">Request Invite</button>
+                  <button className="floating-cta-btn" onClick={handleRequestInvite}>Request Invite</button>
                 </div>
               </div>
             </motion.div>

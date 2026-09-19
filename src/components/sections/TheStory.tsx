@@ -30,7 +30,7 @@ const ParallaxImage = ({ className = '', imageSrc }: { className?: string, image
     <motion.div
       ref={ref}
       className={`story-image-placeholder-wrapper${imageSrc ? ' has-source-image' : ''} ${className}`}
-      style={imageRatio ? { aspectRatio: imageRatio } : undefined}
+      style={imageSrc ? { aspectRatio: imageRatio ?? 1 } : undefined}
       variants={maskReveal}
       initial="hidden"
       whileInView="visible"

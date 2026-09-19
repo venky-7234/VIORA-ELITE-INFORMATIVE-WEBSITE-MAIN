@@ -16,6 +16,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
   const lenis = useLenis();
   const navigate = useNavigate();
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const isStoryPage = location.pathname === '/story';
+  const isJournalPage = location.pathname === '/gallery';
+  const isChaptersPage = location.pathname === '/chapters' || location.pathname.startsWith('/retreats/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -116,17 +120,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
 
         {/* Desktop Navigation */}
         <div className="navbar-menu">
-          <Link to="/" onClick={(e) => handleNavClick(e, 'home')} className="nav-link">HOME</Link>
-          <Link to="/story" onClick={handleStoryClick} className="nav-link">THE STORY</Link>
-          <Link to="/gallery" onClick={handleGalleryClick} className="nav-link">THE JOURNAL</Link>
+          <Link to="/" onClick={(e) => handleNavClick(e, 'home')} className={`nav-link${isHomePage ? ' nav-link-active' : ''}`} aria-current={isHomePage ? 'page' : undefined}>HOME</Link>
+          <Link to="/story" onClick={handleStoryClick} className={`nav-link${isStoryPage ? ' nav-link-active' : ''}`} aria-current={isStoryPage ? 'page' : undefined}>THE STORY</Link>
+          <Link to="/gallery" onClick={handleGalleryClick} className={`nav-link${isJournalPage ? ' nav-link-active' : ''}`} aria-current={isJournalPage ? 'page' : undefined}>THE JOURNAL</Link>
           
           {/* Chapters Dropdown */}
           <div className="nav-dropdown-container">
-            <span className="nav-link nav-link-dropdown" style={{ cursor: 'pointer' }}>
+            <span className={`nav-link nav-link-dropdown${isChaptersPage ? ' nav-link-active' : ''}`} style={{ cursor: 'pointer' }}>
               THE CHAPTERS <span className="nav-dropdown-arrow">▼</span>
             </span>
             <div className="nav-dropdown-menu">
-              <Link to="/chapters" className="nav-dropdown-item">Chapter I</Link>
+              <Link to="/chapters" className={`nav-dropdown-item${isChaptersPage ? ' nav-dropdown-item-active' : ''}`} aria-current={isChaptersPage ? 'page' : undefined}>Chapter I</Link>
             </div>
           </div>
         </div>
@@ -167,7 +171,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
         </button>
         <div className="mobile-drawer-links">
           <div className="mobile-nav-socials" aria-label="Social media links">
-            <a href="#" className="mobile-nav-social-link" aria-label="Instagram">
+            <a href="https://www.instagram.com/viora.elite?stkn=dGN2ZHVtdnJ4bmF2" className="mobile-nav-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
               <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
             <a href="#" className="mobile-nav-social-link" aria-label="Twitter">
@@ -183,19 +187,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
               <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
             </a>
           </div>
-          <Link to="/" onClick={(e) => { handleNavClick(e, 'home'); closeMenu(); }} className="mobile-nav-link">HOME</Link>
-          <Link to="/story" onClick={(e) => { handleStoryClick(e); closeMenu(); }} className="mobile-nav-link">THE STORY</Link>
-          <Link to="/gallery" onClick={(e) => { handleGalleryClick(e); closeMenu(); }} className="mobile-nav-link">THE JOURNAL</Link>
+          <Link to="/" onClick={(e) => { handleNavClick(e, 'home'); closeMenu(); }} className={`mobile-nav-link${isHomePage ? ' mobile-nav-link-active' : ''}`} aria-current={isHomePage ? 'page' : undefined}>HOME</Link>
+          <Link to="/story" onClick={(e) => { handleStoryClick(e); closeMenu(); }} className={`mobile-nav-link${isStoryPage ? ' mobile-nav-link-active' : ''}`} aria-current={isStoryPage ? 'page' : undefined}>THE STORY</Link>
+          <Link to="/gallery" onClick={(e) => { handleGalleryClick(e); closeMenu(); }} className={`mobile-nav-link${isJournalPage ? ' mobile-nav-link-active' : ''}`} aria-current={isJournalPage ? 'page' : undefined}>THE JOURNAL</Link>
           
           <div className="mobile-nav-dropdown-group">
             <button
-              className="mobile-nav-link mobile-dropdown-toggle"
+              className={`mobile-nav-link mobile-dropdown-toggle${isChaptersPage ? ' mobile-nav-link-active' : ''}`}
               onClick={toggleMobileExperiences}
             >
               THE CHAPTERS <span className={`nav-dropdown-arrow ${mobileExperiencesOpen ? 'open' : ''}`}>▼</span>
             </button>
             <div className={`mobile-nav-sublinks ${mobileExperiencesOpen ? 'open' : ''}`}>
-              <Link to="/chapters" onClick={closeMenu} className="mobile-nav-sublink">Chapter I</Link>
+              <Link to="/chapters" onClick={closeMenu} className={`mobile-nav-sublink${isChaptersPage ? ' mobile-nav-sublink-active' : ''}`} aria-current={isChaptersPage ? 'page' : undefined}>Chapter I</Link>
             </div>
           </div>
 
