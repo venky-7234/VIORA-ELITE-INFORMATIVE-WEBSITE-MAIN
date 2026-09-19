@@ -16,7 +16,7 @@ const chaptersData = [
       'https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80',
       'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80'
     ],
-    img: 'https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/The+Story/Profile_images_BG_9_11zon.png'
+    img: 'https://vioraelite.s3.eu-north-1.amazonaws.com/viora-backups/daily/Profile_images_BG_3_11zon.webp'
   },
   {
     id: 2,

@@ -32,7 +32,7 @@ const ParallaxImage = ({ className = '', imageSrc }: { className?: string, image
       className={`story-image-placeholder-wrapper${imageSrc ? ' has-source-image' : ''} ${className}`}
       style={imageSrc ? { aspectRatio: imageRatio ?? 1 } : undefined}
       variants={maskReveal}
-      initial="hidden"
+      initial={imageSrc ? false : "hidden"}
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
     >
@@ -45,6 +45,9 @@ const ParallaxImage = ({ className = '', imageSrc }: { className?: string, image
             className="story-parallax-image"
             src={imageSrc}
             alt="Viora story"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             onLoad={(event) => {
               const image = event.currentTarget;
               setImageRatio(image.naturalWidth / image.naturalHeight);
@@ -136,11 +139,11 @@ export const TheStory: React.FC = () => {
         <section className="story-collage-section">
           <div className="collage-images-container">
             <div className="collage-img-left">
-              <ParallaxImage imageSrc="https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/The+Story/bag_4_11zon.png" />
+              <ParallaxImage imageSrc="https://vioraelite.s3.eu-north-1.amazonaws.com/viora-backups/daily/bag_1_11zon.webp" />
             </div>
 
             <div className="collage-img-right">
-              <ParallaxImage imageSrc="https://vioraelite.s3.eu-north-1.amazonaws.com/hero+section/The+Story/invetation_8_11zon.png" />
+              <ParallaxImage imageSrc="https://vioraelite.s3.eu-north-1.amazonaws.com/viora-backups/daily/invetation_2_11zon.webp" />
             </div>
 
             {/* Absolute Centered Overlapping Card */}
